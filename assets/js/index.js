@@ -7,7 +7,6 @@
 Реализовать метод validate, который будет принимать число и проверить входит ли число в указанный диапазон.
 Возвращает число, если оно входит в диапазон. Выкидывает ошибку, если не входит в диапазон*/
 
-
 const typeNumberError = new TypeError('wrong type, need a number');
 /**
  * Creates a new RangeValidator.
