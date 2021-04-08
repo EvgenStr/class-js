@@ -9,7 +9,15 @@
 
 
 const typeNumberError = new TypeError('wrong type, need a number');
+/**
+ * Creates a new RangeValidator.
+ * @class
+ */
 class RangeValidator {
+  /**
+   * @param {number} from 
+   * @param {number} to 
+   */
   constructor(from, to) {
     this.from = from;
     this.to = to;
@@ -44,4 +52,4 @@ const validator = new RangeValidator(10, 52);
 
 // const test = validator.from;
 // validator.to = 55;
-
+// const validator2 = new RangeValidator(validator._from, validator._to);
