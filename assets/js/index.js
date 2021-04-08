@@ -31,8 +31,9 @@ class RangeValidator {
   }
   validate(value) {
     if (typeof value !== 'number') throw new TypeError();
-    if (value <= this.from && value >= this.to) {
-      return value;
+    if (value < this.from && value > this.to) {
+      throw new RangeError()
     }
+    return value;
   }
 }
