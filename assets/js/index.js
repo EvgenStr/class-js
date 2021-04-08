@@ -1,15 +1,38 @@
 'use strict';
+/*Реализовать класс RangeValidator, со следующими свойствами:
+■ from(number);
+■ to(number);
+Реализовать getter'ы и setter'ы для обоих свойств
+Реализовать getter range, который будет возвращать массив с двумя числами диапазона
+Реализовать метод validate, который будет принимать число и проверить входит ли число в указанный диапазон.
+Возвращает число, если оно входит в диапазон.Выкидывает ошибку, если не входит в диапазон*/
 
 class RangeValidator {
   constructor(from, to) {
     this.from = from;
     this.to = to;
   }
-  set from(number) {
-    if (typeof number !== 'number') throw new TypeError();
-    this.from = number;
+  set from(value) {
+    if (typeof value !== 'number') throw new TypeError();
+    this.from = value;
   }
   get from() {
     return this.from;
+  }
+  set to(value) {
+    if (typeof value !== 'number') throw new TypeError();
+    this.to = value;
+  }
+  get to() {
+    return this.to;
+  }
+  getterRange() {
+    return [this.from, this.to]
+  }
+  validate(value) {
+    if (typeof value !== 'number') throw new TypeError();
+    if (value <= this.from && value >= this.to) {
+      return value;
+    }
   }
 }
