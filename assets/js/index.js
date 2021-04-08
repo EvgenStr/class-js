@@ -7,7 +7,8 @@
 Реализовать метод validate, который будет принимать число и проверить входит ли число в указанный диапазон.
 Возвращает число, если оно входит в диапазон. Выкидывает ошибку, если не входит в диапазон*/
 
-const typeNumberError = new TypeError('wrong type, need a number');
+// const typeNumberError = new TypeError('wrong type, need a number');
+
 /**
  * Creates a new RangeValidator.
  * @class
@@ -22,14 +23,14 @@ class RangeValidator {
     this.to = to;
   }
   set from(value) {
-    if (typeof value !== 'number') throw typeNumberError;
+    if (typeof value !== 'number') throw new TypeError('wrong type, need a number');
     this._from = value;
   }
   get from() {
     return this._from;
   }
   set to(value) {
-    if (typeof value !== 'number') throw typeNumberError;
+    if (typeof value !== 'number') throw new TypeError('wrong type, need a number');
     this._to = value;
   }
   get to() {
@@ -39,7 +40,7 @@ class RangeValidator {
     return [this._from, this._to];
   }
   validate(value) {
-    if (typeof value !== 'number') throw typeNumberError;
+    if (typeof value !== 'number') throw new TypeError('wrong type, need a number');
     if (value < this.from || value > this.to) {
       throw new RangeError('this value out of range');
     }
