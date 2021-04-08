@@ -29,7 +29,7 @@ class RangeValidator {
     return this._from;
   }
   set to(value) {
-    if (typeof value !== 'number') throw new typeNumberError;
+    if (typeof value !== 'number') throw typeNumberError;
     this._to = value;
   }
   get to() {
@@ -39,7 +39,7 @@ class RangeValidator {
     return [this._from, this._to];
   }
   validate(value) {
-    if (typeof value !== 'number') throw new typeNumberError;
+    if (typeof value !== 'number') throw typeNumberError;
     if (value < this.from || value > this.to) {
       throw new RangeError('this value out of range');
     }
