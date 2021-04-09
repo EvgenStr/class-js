@@ -36,7 +36,7 @@ class RangeValidator {
   get to() {
     return this._to;
   }
-  get getterRange() {
+  get range() {
     return [this._from, this._to];
   }
   validate(value) {
