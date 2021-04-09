@@ -37,7 +37,7 @@ class RangeValidator {
     return this._to;
   }
   get range() {
-    return [this._from, this._to];
+    return [this.from, this.to];
   }
   validate(value) {
     if (typeof value !== 'number') throw new TypeError('wrong type, need a number');
