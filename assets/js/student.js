@@ -5,3 +5,31 @@
 Курс вычисляется так: нужно от текущего года отнять год поступления в вуз.Текущий год получите самостоятельно.*/
 
 'use strict';
+
+class User {
+  constructor(name, surname) {
+    this.name = name;
+    this.surname = surname;
+  }
+  set name(newName) {
+    if (typeof newName !== 'string') {
+      throw new TypeError("");
+    }
+    this._name = newName;
+  }
+  get name() {
+    return this._name;
+  }
+  set surname(newSurname) {
+    if (typeof newSurname !== 'string') {
+      throw new TypeError("");
+    }
+    this._surname = newSurname;
+  }
+  get surname() {
+    return this._surname;
+  }
+}
+
+
+const test = new User('test', "TEST")
