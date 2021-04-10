@@ -37,7 +37,13 @@ class User {
 
 class Student extends User{
   constructor(name, surname, year){
-    super(name, surname)
+    super(name, surname);
+    this.year = year;
+  }
+  set year(newYear){
+    if(typeof newYear !== 'number'){
+      throw new TypeError("")
+    }
   }
 }
 
