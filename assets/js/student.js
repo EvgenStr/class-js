@@ -7,7 +7,6 @@
 'use strict';
 
 const currentYear = new Date().getFullYear();
-const currentMonth = new Date().getMonth();
 const amountCourses = 5;
 
 /**
@@ -59,7 +58,7 @@ class Student extends User {
     return this._year;
   }
   get getCourse() {
-    let course = currentMonth >= 8 ? currentYear - this.year + 1 : currentYear - this.year;
+    let course = currentYear - this.year;
     return course <= amountCourses ? course : `student graduated in ${this.year + amountCourses}`;
   }
 }
