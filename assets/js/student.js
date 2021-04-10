@@ -29,7 +29,16 @@ class User {
   get surname() {
     return this._surname;
   }
+  get getFullName() {
+    return `${this.name} ${this.surname}`;
+  }
 }
 
+
+class Student extends User{
+  constructor(name, surname, year){
+    super(name, surname)
+  }
+}
 
 const test = new User('test', "TEST")
