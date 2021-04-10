@@ -1,3 +1,4 @@
+import * as Student from './student.js';
 'use strict';
 /*Реализовать класс RangeValidator, со следующими свойствами:
 ■ from(number);
