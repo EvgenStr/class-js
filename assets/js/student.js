@@ -6,6 +6,13 @@
 
 'use strict';
 
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth();
+const amountCourses = 5;
+
+/**
+ * @class
+ */
 class User {
   constructor(name, surname) {
     this.name = name;
@@ -13,7 +20,7 @@ class User {
   }
   set name(newName) {
     if (typeof newName !== 'string') {
-      throw new TypeError("");
+      throw new TypeError("Name must be string type");
     }
     this._name = newName;
   }
@@ -22,7 +29,7 @@ class User {
   }
   set surname(newSurname) {
     if (typeof newSurname !== 'string') {
-      throw new TypeError("");
+      throw new TypeError("Surname must be string type");
     }
     this._surname = newSurname;
   }
@@ -34,17 +41,30 @@ class User {
   }
 }
 
-
-class Student extends User{
-  constructor(name, surname, year){
+/**
+ * @class
+ */
+class Student extends User {
+  constructor(name, surname, year) {
     super(name, surname);
     this.year = year;
   }
-  set year(newYear){
-    if(typeof newYear !== 'number'){
-      throw new TypeError("")
+  set year(newYear) {
+    if (typeof newYear !== 'number' || newYear > currentYear) {
+      throw new Error("Wrong Year");
     }
+    this._year = newYear;
+  }
+  get year() {
+    return this._year;
+  }
+  get getCourse() {
+    let course = currentMonth >= 8 ? currentYear - this.year + 1 : currentYear - this.year;
+    return course <= amountCourses ? course : `student graduated in ${this.year + amountCourses}`;
   }
 }
 
-const test = new User('test', "TEST")
+const test = new User('test', "TEST");
+const student = new Student('John', 'Doe', 2020);
+const oldStudent = new Student('John', 'Doe', 2010);
+// const student2 = new Student('John', 'Doe', 2022);
