@@ -7,6 +7,7 @@
 'use strict';
 
 const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth();
 const amountCourses = 5;
 
 /**
@@ -50,7 +51,7 @@ class Student extends User {
   }
   set year(newYear) {
     if (typeof newYear !== 'number' || newYear > currentYear) {
-      throw new Error("Wrong Year");
+      throw new Error("Wrong year");
     }
     this._year = newYear;
   }
@@ -58,8 +59,8 @@ class Student extends User {
     return this._year;
   }
   get getCourse() {
-    let course = currentYear - this.year;
-    return course <= amountCourses ? course : `student graduated in ${this.year + amountCourses}`;
+    let course = currentMonth >= 7 ? currentYear - this.year + 1 : currentYear - this.year;
+    return course <= amountCourses ? course : this.year + amountCourses; // `student graduated in ${this.year + amountCourses}`
   }
 }
 
