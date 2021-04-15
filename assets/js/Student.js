@@ -48,6 +48,7 @@ class Student extends User {
     this.year = year;
   }
   set year(newYear) {
+    const currentYear = new Date().getFullYear();
     if (typeof newYear !== 'number' || newYear > currentYear) {
       throw new Error("Wrong year");
     }

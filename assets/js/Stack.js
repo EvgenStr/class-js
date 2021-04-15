@@ -15,13 +15,6 @@ class Stack {
     return this._size;
   }
 
-  /*push(value) {
-    if (this.size >= this._maxSize) {
-      throw new RangeError("Stack overflow");
-    }
-    this[`_${this.size}`] = value;
-    return ++this._size;
-  }*/
   push(...args) {
     for (const item of args) {
       if (this.size >= this._maxSize) {
@@ -50,28 +43,34 @@ class Stack {
 // const stack = new Stack();
 // const stack = new Stack(5, 'text', 6, 2, 2, 1, 6)
 
-let arr = ['{', '}', '[', ']']
-function checkSequence(string) {
-  if (string[0] === ')') {
-    return false;
-  }
-  const check = {
-    1: "}",
-    2: ']',
-    3: ')',
-  }
-  let stack = new Stack(string.length);
-  for (const item of string) {
-    if (item === '(' || item === '[' || item === '{') {
-      stack.push(item);
-    } else if (!stack.size) {
-      return false;
-    }
-    else if ((item === '}' && stack.pip() === '{') || (item === ')' && stack.pip() === '(') || (item === ']' && stack.pip() === '[')) {
-      stack.pop()
-    }
-  }
-  return !stack.size;
+const options = {
+  braces: { '(': ')', '[': ']', '{': '}', },
+  strict: false,
 }
 
-braces[stack.pop()] === symbol
+function checkSequence(string, options) {
+
+  const stack = new Stack(string.length);
+  const braces = options.braces;
+  const closeBraces = Object.values(braces)
+
+  for (const symbol of string) {
+    if (braces[symbol]) {
+      stack.push(symbol);
+      continue;
+    }
+    if (stack.isEmpty && closeBraces.includes(symbol)) {
+      return false;
+    }
+    if (braces[stack.pip()] === symbol) {
+      stack.pop()
+      continue;
+    }
+    if (closeBraces.includes(symbol)) {
+      return false;
+    }
+  }
+  return stack.isEmpty;
+}
+
+console.log(checkSequence('(({3+})[{ew8}]([*])[fwe])', options), 'stack')
