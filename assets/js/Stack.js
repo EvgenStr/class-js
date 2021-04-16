@@ -73,4 +73,4 @@ function checkSequence(string, options) {
   return stack.isEmpty;
 }
 
-console.log(checkSequence('(({3+})[{ew8}]([*])[fwe])', options), 'stack')
+// console.log(checkSequence('(({3+})[{ew8}]([*])[fwe])', options), 'stack')
